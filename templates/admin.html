@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container mt-5">
+            <h1>Admin Command Interface</h1>
+            <form method="post">
+              {{ form.hidden_tag() }}
+              <p>
+                {{ form.command.label }}<br>
+                {{ form.command(size=80) }}
+              </p>
+              <p>{{ form.submit() }}</p>
+            </form>
+            {% if result %}
+              <h2>Command Output</h2>
+              <pre>{{ result }}</pre>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

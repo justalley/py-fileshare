@@ -1,0 +1,28 @@
+version: '3'
+networks:
+  default-network:
+    driver: bridge
+services:
+  app:
+    networks:
+      - default-network
+    build: .
+    ports:
+      - "8888:80"
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    networks:
+      - default-network
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      # MYSQL_ROOT_PASSWORD: test-root-password
+      MYSQL_DATABASE: file_sharing
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test-password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

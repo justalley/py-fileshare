@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container mt-5">
+        <h1>Add Comment</h1>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.file.label }}<br>
+                {{ form.file() }}
+            </p>
+            <p>
+                {{ form.comment.label }}<br>
+                {{ form.comment(rows=4, cols=50) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

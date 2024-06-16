@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container mt-5">
+        <h1 class="display-4">Share File Group</h1>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <p>
+            {{ form.file_group.label }}<br>
+              {{ form.file_group() }}
+            </p>
+            <p>
+              {{ form.user.label }}<br>
+              {{ form.user() }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="btn btn-primary btn-lg" href="/a/upload">Upload File</a>
+              </li>
+              <li class="nav-item active">
+                <a class="btn btn-primary btn-lg" href="/a/comment">Comment Uploaded File</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

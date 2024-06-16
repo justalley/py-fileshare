@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Dashboard</h1>
+    
+    <h2 class="display-5">Uploaded Files</h2>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th style="width: 80%;">Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in uploaded_files %}
+            <tr>
+                <td>{{ file.filename }}</td>
+                <td>
+                    {% for comment in file.comments %}
+                        <p><strong>{{ comment.author_username }}:</strong> {{ comment.get_text() }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="display-5">Shared Files</h2>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th style="width: 80%;">Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in shared_files %}
+            <tr>
+                <td>{{ file.filename }}</td>
+                <td>
+                    {% for comment in file.comments %}
+                        <p><strong>{{ comment.author_username }}:</strong> {{ comment.get_text() }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
